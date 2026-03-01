@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Reveal</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Grain / particles */
+    .grain::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.08;
+      animation: drift 25s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-36px); }
+    }
+
+    main {
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Image */
+    .hero-img {
+      width: 120px;
+      max-width: 42vw;
+      margin-bottom: 24px;
+      filter: grayscale(100%) contrast(1.1);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: clamp(26px, 6vw, 42px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 32px;
+    }
+
+    /* Monochrome button */
+    .cta {
+      position: relative;
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow:
+        0 10px 30px rgba(255,255,255,0.15);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      animation: pulseBW 2.8s ease-in-out infinite;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      border: 1px solid rgba(255,255,255,0.4);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow:
+        0 16px 45px rgba(255,255,255,0.35);
+    }
+
+    .cta:hover::before {
+      opacity: 1;
+    }
+
+    .cta:active {
+      transform: scale(0.95);
+      box-shadow:
+        0 8px 20px rgba(255,255,255,0.25);
+    }
+
+    @keyframes pulseBW {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+      }
+      50% {
+        box-shadow: 0 10px 45px rgba(255,255,255,0.35);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <main>
+    
+    <img src="./assets/cat1.png" class="hero-img" alt="Reveal" />
+
+    <h1>
+      Everything turned so dull 😓
+    </h1>
+
+    <p>
+      Fill my life with colours please
+    </p>
+
+    <button class="cta" onclick="nextStep()">
+      Coming in your life →
+    </button>
+  </main>
+
+  <script>
+    function nextStep() {
+      // Change if needed
+      window.location.href = "memories.html";
+    }
+  </script>
+</body>
+</html>
